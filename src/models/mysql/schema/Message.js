@@ -1,21 +1,23 @@
 /*
  * @Author: jason <2087108700@qq.com>
- * @Date: 2021-06-27 20:30:44
- * @LastEditTime : 2021-07-04 18:07:50
+ * @Date: 2021-06-27 20:19:28
+ * @LastEditTime : 2021-07-04 18:10:06
  * @LastEditors  : Jason
- * @Description: 博客评论模型
- * @FilePath     : \koa2-blog-api\src\models\mysql\schema\BlogComment.js
+ * @Description: 系统通知模型
+ * @FilePath     : \koa2-blog-api\src\models\mysql\schema\Message.js
  */
 const { DataTypes } = require('sequelize')
 const sequelize = require('@models/mysql')
 
-const BlogComment = sequelize.define('BlogComment', {
+const Message = sequelize.define('Message', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
   status: { type: DataTypes.INTEGER, allowNull: false, comment: '状态 0-未启用', defaultValue: 0 },
-  // blog_id: { type: DataTypes.INTEGER, allowNull: false, comment: '博客ID' },
-  fid: { type: DataTypes.INTEGER, allowNull: false, comment: '被回复评论ID 0-仅为评论', defaultValue: 0 },
-  love: { type: DataTypes.INTEGER, allowNull: false, comment: '评论点赞数', defaultValue: 0 },
-  content: { type: DataTypes.TEXT, allowNull: false, comment: '评论内容' },
+  fid: { type: DataTypes.INTEGER, allowNull: false, comment: '被回复消息ID 0-仅为消息', defaultValue: 0 },
+  level: { type: DataTypes.STRING, allowNull: false, comment: '消息等级' },
+  type: { type: DataTypes.STRING, allowNull: false, comment: '消息类型 0-系统 1-用户 2-其他' },
+  range: { type: DataTypes.STRING, allowNull: false, comment: '消息范围 0-全平台 x,x-指定用户ID' },
+  title: { type: DataTypes.STRING, allowNull: false, comment: '消息标题' },
+  content: { type: DataTypes.TEXT, allowNull: false, comment: '消息内容' },
   is_delete: { type: DataTypes.INTEGER, comment: '软删除 1-已删除 0-未删除', defaultValue: 0 },
   revision: { type: DataTypes.STRING, comment: '乐观锁' },
   created_by: { type: DataTypes.STRING, comment: '创建人' },
@@ -24,4 +26,4 @@ const BlogComment = sequelize.define('BlogComment', {
   updated_at: { type: DataTypes.DATE, comment: '更新时间', defaultValue: DataTypes.DATE },
 })
 
-module.exports = BlogComment
+module.exports = Message
