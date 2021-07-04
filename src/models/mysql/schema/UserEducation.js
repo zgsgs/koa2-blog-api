@@ -12,7 +12,7 @@ const sequelize = require('@models/mysql')
 const UserEducation = sequelize.define('UserEducation', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
   status: { type: DataTypes.INTEGER, allowNull: false, comment: '状态 0-未启用', defaultValue: 0 },
-  // uuid: { type: DataTypes.INTEGER, allowNull: false, comment: '用户ID' },
+  uid: { type: DataTypes.INTEGER, allowNull: false, comment: '用户ID' },
   current: { type: DataTypes.BOOLEAN, comment: '当前状态' },
   school: { type: DataTypes.STRING, comment: '学校' },
   degree: { type: DataTypes.STRING, comment: '学位' },

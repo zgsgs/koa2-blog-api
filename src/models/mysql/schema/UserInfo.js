@@ -1,7 +1,7 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-06-27 16:53:09
- * @LastEditTime : 2021-07-04 21:08:16
+ * @LastEditTime : 2021-07-04 23:28:03
  * @LastEditors  : Jason
  * @Description: 用户模型
  * @FilePath     : \koa2-blog-api\src\models\mysql\schema\UserInfo.js
@@ -12,7 +12,7 @@ const sequelize = require('@models/mysql')
 const UserInfo = sequelize.define('UserInfo', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
   status: { type: DataTypes.STRING, allowNull: false, comment: '状态' },
-  // uuid: { type: DataTypes.STRING, allowNull: false, comment: '用户ID' },
+  uid: { type: DataTypes.INTEGER, allowNull: false, comment: '用户ID' },
   birthday: { type: DataTypes.DATE, comment: '生日' },
   location: { type: DataTypes.STRING, comment: '出生地址' },
   company: { type: DataTypes.STRING, comment: '公司' },

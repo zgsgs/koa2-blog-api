@@ -1,10 +1,10 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-06-27 18:21:30
- * @LastEditTime : 2021-07-04 21:17:03
+ * @LastEditTime : 2021-07-04 23:24:30
  * @LastEditors  : Jason
  * @Description: 用户行为模型
- * @FilePath     : \koa2-blog-api\src\models\mysql\schema\AuthUserBehavior.js
+ * @FilePath     : \koa2-blog-api\src\models\mysql\schema\UserBehavior.js
  */
 const { DataTypes } = require('sequelize')
 const sequelize = require('@models/mysql')
@@ -12,7 +12,7 @@ const sequelize = require('@models/mysql')
 const UserBehavior = sequelize.define('UserBehavior', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
   status: { type: DataTypes.STRING, allowNull: false, comment: '状态 0-未启用', defaultValue: 0 },
-  // uuid: { type: DataTypes.STRING, allowNull: false, comment: '用户ID' },
+  uid: { type: DataTypes.INTEGER, allowNull: false, comment: '用户ID' },
   object_type: { type: DataTypes.STRING, allowNull: false, comment: '关联对象类型' },
   object_id: { type: DataTypes.STRING, allowNull: false, comment: '关联对象号' },
   type: { type: DataTypes.STRING, allowNull: false, comment: '行为类型' },

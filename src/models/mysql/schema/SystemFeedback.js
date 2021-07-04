@@ -13,7 +13,7 @@ const SystemFeedback = sequelize.define('SystemFeedback', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
   status: { type: DataTypes.STRING, allowNull: false, comment: '状态' },
   level: { type: DataTypes.STRING, allowNull: false, comment: '反馈层级' },
-  fid: { type: DataTypes.INTEGER, allowNull: false, comment: '被回复反馈ID 0-仅为反馈', defaultValue: 0 },
+  pid: { type: DataTypes.INTEGER, allowNull: false, comment: '被回复反馈ID 0-仅为反馈', defaultValue: 0 },
   type: { type: DataTypes.STRING, allowNull: false, comment: '反馈类型' },
   title: { type: DataTypes.STRING, allowNull: false, comment: '反馈标题' },
   content: { type: DataTypes.TEXT, allowNull: false, comment: '反馈内容' },

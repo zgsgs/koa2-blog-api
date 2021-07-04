@@ -8,7 +8,7 @@
  */
 const { DataTypes } = require('sequelize')
 const sequelize = require('@models/mysql')
-const SystemDictionary = require('./SystemDictionary')
+// const SystemDictionary = require('./SystemDictionary')
 
 const SystemDictionaryType = sequelize.define('SystemDictionaryType', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, comment: '流水号', autoIncrement: true },
@@ -23,6 +23,6 @@ const SystemDictionaryType = sequelize.define('SystemDictionaryType', {
   updated_at: { type: DataTypes.DATE, comment: '更新时间', defaultValue: DataTypes.DATE },
 })
 
-SystemDictionaryType.SystemDictionary = SystemDictionaryType.hasMany(SystemDictionary)
+// SystemDictionaryType.SystemDictionary = SystemDictionaryType.hasMany(SystemDictionary)
 
 module.exports = SystemDictionaryType

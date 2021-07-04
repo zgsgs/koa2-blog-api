@@ -12,7 +12,7 @@ const sequelize = require('@models/mysql')
 const UserLoginLog = sequelize.define('UserLoginLog', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
   status: { type: DataTypes.STRING, allowNull: false, comment: '状态' },
-  // uuid: { type: DataTypes.STRING, allowNull: false, comment: '用户ID' },
+  uid: { type: DataTypes.INTEGER, allowNull: false, comment: '用户ID' },
   browser: { type: DataTypes.STRING, allowNull: false, comment: '登录浏览器' },
   resolution: { type: DataTypes.STRING, allowNull: false, comment: '登录屏幕分辨率' },
   ip: { type: DataTypes.STRING, allowNull: false, comment: '登录IP' },

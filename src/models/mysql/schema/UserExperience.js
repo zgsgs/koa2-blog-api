@@ -1,10 +1,10 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-06-27 17:48:39
- * @LastEditTime: 2021-06-28 01:17:08
- * @LastEditors: jason
+ * @LastEditTime : 2021-07-04 23:27:24
+ * @LastEditors  : Jason
  * @Description: 用户工作经历数据模型
- * @FilePath: \koa2-blog-api\src\models\mysql\schema\UserExperience.js
+ * @FilePath     : \koa2-blog-api\src\models\mysql\schema\UserExperience.js
  */
 const { DataTypes } = require('sequelize')
 const sequelize = require('@models/mysql')
@@ -12,7 +12,7 @@ const sequelize = require('@models/mysql')
 const UserExperience = sequelize.define('UserExperience', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
   status: { type: DataTypes.INTEGER, allowNull: false, comment: '状态 0-未启用', defaultValue: 0 },
-  // uuid: { type: DataTypes.INTEGER, allowNull: false, comment: '用户ID' },
+  uid: { type: DataTypes.INTEGER, allowNull: false, comment: '用户ID' },
   current: { type: DataTypes.BOOLEAN, comment: '当前工作状态' },
   title: { type: DataTypes.STRING, comment: '名称' },
   company: { type: DataTypes.STRING, comment: '公司' },

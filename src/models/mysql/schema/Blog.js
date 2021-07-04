@@ -9,14 +9,14 @@
 
 const { DataTypes } = require('sequelize')
 const sequelize = require('@models/mysql')
-const BlogCategory = require('./BlogCategory')
-const BlogComment = require('./BlogComment')
+// const BlogCategory = require('./BlogCategory')
+// const BlogComment = require('./BlogComment')
 
 const Blog = sequelize.define('Blog', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
   status: { type: DataTypes.INTEGER, allowNull: false, comment: '状态 0-未启用', defaultValue: 0 },
-  // uuid: { type: DataTypes.STRING, allowNull: false, comment: '用户ID' },
-  // category_id: { type: DataTypes.INTEGER, allowNull: false, comment: '分类ID' },
+  uid: { type: DataTypes.INTEGER, allowNull: false, comment: '用户ID' },
+  category_id: { type: DataTypes.INTEGER, allowNull: false, comment: '分类ID' },
   views: { type: DataTypes.STRING, allowNull: false, comment: '浏览量', defaultValue: 0 },
   collection: { type: DataTypes.INTEGER, allowNull: false, comment: '收藏量', defaultValue: 0 },
   title: { type: DataTypes.STRING, allowNull: false, comment: '标题' },
@@ -33,7 +33,7 @@ const Blog = sequelize.define('Blog', {
   updated_at: { type: DataTypes.DATE, comment: '更新时间', defaultValue: DataTypes.DATE },
 })
 
-Blog.BlogCategory = Blog.hasOne(BlogCategory)
-Blog.BlogComment = Blog.hasMany(BlogComment)
+// Blog.BlogCategory = Blog.hasOne(BlogCategory)
+// Blog.BlogComment = Blog.hasMany(BlogComment)
 
 module.exports = Blog

@@ -12,7 +12,7 @@ const sequelize = require('@models/mysql')
 const Message = sequelize.define('Message', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
   status: { type: DataTypes.INTEGER, allowNull: false, comment: '状态 0-未启用', defaultValue: 0 },
-  fid: { type: DataTypes.INTEGER, allowNull: false, comment: '被回复消息ID 0-仅为消息', defaultValue: 0 },
+  pid: { type: DataTypes.INTEGER, allowNull: false, comment: '被回复消息ID 0-仅为消息', defaultValue: 0 },
   level: { type: DataTypes.STRING, allowNull: false, comment: '消息等级' },
   type: { type: DataTypes.STRING, allowNull: false, comment: '消息类型 0-系统 1-用户 2-其他' },
   range: { type: DataTypes.STRING, allowNull: false, comment: '消息范围 0-全平台 x,x-指定用户ID' },

@@ -1,7 +1,7 @@
 /*
  * @Author       : Jason <2087108700@qq.com>
  * @Date         : 2021-07-04 18:44:00
- * @LastEditTime : 2021-07-04 21:05:48
+ * @LastEditTime : 2021-07-04 23:25:21
  * @LastEditors  : Jason
  * @Description  : 系统API日志模型
  * @FilePath     : \koa2-blog-api\src\models\mysql\schema\SystemAPILog.js
@@ -12,7 +12,7 @@ const sequelize = require('@models/mysql')
 const SystemApiLog = sequelize.define('SystemApiLog', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
   status: { type: DataTypes.INTEGER, allowNull: false, comment: '状态 0-未启用', defaultValue: 0 },
-  uuid: { type: DataTypes.STRING, allowNull: false, comment: '用户ID' },
+  uid: { type: DataTypes.INTEGER, allowNull: false, comment: '用户ID' },
   method: { type: DataTypes.ENUM('post', 'get', 'delete', 'put', 'head', 'connect', 'options', 'trace', 'patch'), allowNull: false, comment: '请求类型' },
   module: { type: DataTypes.STRING, allowNull: false, comment: '模块(菜单ID)' },
   controller: { type: DataTypes.STRING, allowNull: false, comment: '控制器' },

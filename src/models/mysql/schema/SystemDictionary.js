@@ -12,7 +12,7 @@ const sequelize = require('@models/mysql')
 const SystemDictionary = sequelize.define('SystemDictionary', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, comment: '流水号', autoIncrement: true },
   status: { type: DataTypes.STRING, allowNull: false, comment: '状态' },
-  // type_id: { type: DataTypes.STRING, allowNull: false, comment: '字典类型ID' },
+  type_id: { type: DataTypes.STRING, allowNull: false, comment: '字典类型ID' },
   code: { type: DataTypes.STRING, comment: '字典编码' },
   name: { type: DataTypes.STRING, comment: '字典中文名称' },
   remark: { type: DataTypes.STRING, comment: '字典备注' },
