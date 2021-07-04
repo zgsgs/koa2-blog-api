@@ -1,7 +1,7 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-05-26 18:50:15
- * @LastEditTime : 2021-07-04 23:35:57
+ * @LastEditTime : 2021-07-04 23:45:05
  * @LastEditors  : Jason
  * @Description: MySQL数据库连接
  * @FilePath     : \koa2-blog-api\src\models\mysql\index.js
@@ -53,15 +53,15 @@ sequelize
     // .sync()-如果表不存在，则会创建表（如果已经存在，则不执行任何操作）
     // .sync({ force: true }) -这将创建表，如果该表已经存在，则将其首先删除
     // .sync({ alter: true }) -这将检查数据库中表的当前状态（它具有哪些列，它们的数据类型是什么，等等），然后在表中进行必要的更改以使其与模型匹配
-    sequelize
-      .sync({ force: true })
-      .then(() => {
-        console.log(`${'sync'.green}: OK`)
-        process.exit()
-      })
-      .catch(r => {
-        throw new Error(`${'sync'.red}: MySQL sync fail 😂`.red, r)
-      })
+    // sequelize
+    //   .sync({ force: true })
+    //   .then(() => {
+    //     console.log(`${'sync'.green}: OK`)
+    //     process.exit()
+    //   })
+    //   .catch(r => {
+    //     throw new Error(`${'sync'.red}: MySQL sync fail 😂`.red, r)
+    //   })
 
     console.log(`${'debug'.green}: MySQL connected success ❤️`.blue)
   })

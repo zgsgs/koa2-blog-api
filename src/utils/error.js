@@ -1,10 +1,10 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-05-31 17:17:39
- * @LastEditTime: 2021-06-01 10:59:42
- * @LastEditors: jason
+ * @LastEditTime : 2021-07-05 00:41:30
+ * @LastEditors  : Jason
  * @Description: 定义错误对象
- * @FilePath: \koa-restful-api\src\utils\error-handle.js
+ * @FilePath     : \koa2-blog-api\src\utils\error.js
  */
 const util = require('util')
 const { ERROR_MSG, constants } = require('@root/config')
@@ -16,16 +16,18 @@ const { ERROR_MSG, constants } = require('@root/config')
  * @param {*} msg 错误消息
  * @return {*}
  */
-function CustomError(code, msg) {
+function CustomError(code, msg, data = {}) {
   Error.call(this, '')
 
   this.code = code
   this.msg = msg || ERROR_MSG[code] || 'Unknown error'
+  this.data = data
 
   this.getCodeMsg = function () {
     return {
       code: this.code,
       msg: this.msg,
+      data: this.data,
     }
   }
 }

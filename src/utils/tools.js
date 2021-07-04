@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-05-25 23:17:05
- * @LastEditTime: 2021-06-01 11:10:48
- * @LastEditors: jason
+ * @LastEditTime : 2021-07-05 00:43:11
+ * @LastEditors  : Jason
  * @Description: In User Settings Edit
- * @FilePath: \koa-restful-api\src\utils\tools.js
+ * @FilePath     : \koa2-blog-api\src\utils\tools.js
  */
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -14,7 +14,7 @@ module.exports = {
   enbcrypt: async str => {
     const salt = bcrypt.genSaltSync(10)
     const hash = bcrypt.hashSync(str, salt)
-    return hash
+    return { hash, salt }
   },
   compare: (str, enStr) => {
     return bcrypt.compareSync(str, enStr)
@@ -22,7 +22,7 @@ module.exports = {
   jwtSign: (payload, expire = 3600) => {
     return jwt.sign(payload, keys.secretOrKey, { expiresIn: expire })
   },
-  formatResponse: (data = {}, code = 200, msg = 'ok') => {
+  formatResponse: (code = 2000, msg = 'ok', data = {}) => {
     return { code, msg, data }
   },
 }

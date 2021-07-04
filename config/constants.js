@@ -16,6 +16,7 @@ module.exports = Object.freeze({
     SERVICE_BUSY: 503
   },
   CUSTOM_CODE: {
-    SOME_CUSTOM_ERROR: 1001
+    SOME_CUSTOM_ERROR: 1001,
+    PARAM_VALIDATION_FAILED: 4001,
   }
 })
