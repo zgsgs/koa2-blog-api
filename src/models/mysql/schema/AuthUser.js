@@ -1,18 +1,24 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-06-27 01:22:03
- * @LastEditTime: 2021-06-28 02:36:29
- * @LastEditors: jason
+ * @LastEditTime : 2021-07-04 14:48:39
+ * @LastEditors  : Jason
  * @Description: 用户账号模型
- * @FilePath: \koa2-blog-api\src\models\mysql\schema\AuthUser.js
+ * @FilePath     : \koa2-blog-api\src\models\mysql\schema\AuthUser.js
  */
 const { DataTypes } = require('sequelize')
 const sequelize = require('@models/mysql')
 const User = require('./User')
-const AuthUserRole = require('./AuthUserRole')
 const AuthUserBehavior = require('./AuthUserBehavior')
 const AuthUserPermit = require('./AuthUserPermit')
 const AuthUserProperty = require('./AuthUserProperty')
+const UserEducation = require('./UserEducation')
+const UserExperience = require('./UserExperience')
+const UserFocus = require('./UserFocus')
+const UserMessage = require('./UserMessage')
+const UserFriend = require('./UserFriend')
+const Blog = require('./Blog')
+const System = require('./System')
 
 const AuthUser = sequelize.define('AuthUser', {
   // id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment:'流水号'},
@@ -43,10 +49,16 @@ const AuthUser = sequelize.define('AuthUser', {
   updated_at: { type: DataTypes.DATE, comment: '更新时间', defaultValue: DataTypes.DATE },
 })
 
-AuthUser.User = AuthUser.hasOne(User)
-AuthUser.AuthUserRole = AuthUser.hasMany(AuthUserRole)
 AuthUser.AuthUserBehavior = AuthUser.hasMany(AuthUserBehavior)
 AuthUser.AuthUserPermit = AuthUser.hasMany(AuthUserPermit)
 AuthUser.AuthUserProperty = AuthUser.hasMany(AuthUserProperty)
+AuthUser.User = AuthUser.hasOne(User)
+AuthUser.UserEducation = AuthUser.hasMany(UserEducation)
+AuthUser.UserExperience = AuthUser.hasMany(UserExperience)
+AuthUser.UserFocus = AuthUser.hasMany(UserFocus)
+AuthUser.UserMessage = AuthUser.hasMany(UserMessage)
+AuthUser.UserFriend = AuthUser.hasOne(UserFriend)
+AuthUser.Blog = AuthUser.hasMany(Blog)
+AuthUser.System = AuthUser.hasMany(System)
 
 module.exports = AuthUser

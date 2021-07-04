@@ -1,10 +1,10 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-06-27 19:29:50
- * @LastEditTime: 2021-06-28 01:22:45
- * @LastEditors: jason
+ * @LastEditTime : 2021-07-04 14:06:03
+ * @LastEditors  : Jason
  * @Description:
- * @FilePath: \koa2-blog-api\src\models\mysql\schema\Blog.js
+ * @FilePath     : \koa2-blog-api\src\models\mysql\schema\Blog.js
  */
 
 const { DataTypes } = require('sequelize')
@@ -24,6 +24,7 @@ const Blog = sequelize.define('Blog', {
   blog_summary: { type: DataTypes.STRING, comment: '摘要', defaultValue: '' },
   blog_page_views: { type: DataTypes.STRING, comment: '浏览量', defaultValue: 0 },
   blog_collection: { type: DataTypes.INTEGER, comment: '收藏量', defaultValue: 0 },
+  blog_content: { type: DataTypes.TEXT, comment: '内容' },
   is_delete: { type: DataTypes.INTEGER, comment: '软删除 1已删除 0未删除' },
   revision: { type: DataTypes.STRING, comment: '乐观锁' },
   created_by: { type: DataTypes.STRING, comment: '创建人' },

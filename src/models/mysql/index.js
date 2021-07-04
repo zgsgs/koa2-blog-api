@@ -1,10 +1,10 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-05-26 18:50:15
- * @LastEditTime: 2021-06-28 02:42:46
- * @LastEditors: jason
+ * @LastEditTime : 2021-07-04 15:31:11
+ * @LastEditors  : Jason
  * @Description: MySQL数据库连接
- * @FilePath: \koa2-blog-api\src\models\mysql\index.js
+ * @FilePath     : \koa2-blog-api\src\models\mysql\index.js
  */
 require('colors')
 require('dotenv').config()
@@ -36,13 +36,17 @@ sequelize
   .then(r => {
     // 加载mysql模型
     const files = fs.readdirSync(path.join(__dirname, 'schema'))
-    for (let file of files) {
-      const fileExtension = file.substring(file.lastIndexOf('.') + 1)
-      if (fileExtension !== 'js') {
-        continue
+    try {
+      for (let file of files) {
+        const fileExtension = file.substring(file.lastIndexOf('.') + 1)
+        if (fileExtension !== 'js') {
+          continue
+        }
+        const fileName = file.replace(/(.*\/)*([^.]+).*/gi, '$2')
+        require(`./schema/${fileName}`)
       }
-      const fileName = file.replace(/(.*\/)*([^.]+).*/gi, '$2')
-      require(`./schema/${fileName}`)
+    } catch (error) {
+      console.log(error)
     }
 
     // 同步模型到数据库
