@@ -1,10 +1,10 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-06-27 14:02:36
- * @LastEditTime: 2021-06-28 02:39:32
- * @LastEditors: jason
- * @Description: 操作Users表的API网关
- * @FilePath: \koa2-blog-api\src\controllers\auth-user.js
+ * @LastEditTime : 2021-07-04 22:33:10
+ * @LastEditors  : Jason
+ * @Description: 操作User表的API网关
+ * @FilePath     : \koa2-blog-api\src\controllers\auth-user.js
  */
 const Router = require('koa-router')
 const passport = require('koa-passport')
@@ -13,8 +13,8 @@ const path = require('path')
 // import form validate
 const validateRegisterInput = require('@/validation/register')
 const validateLoginInput = require('@/validation/login')
-// import AuthUser
-const AuthUser = require('@mysql/AuthUser')
+// import User
+const User = require('@mysql/User')
 const tools = require('@/utils/tools')
 const { constants } = require('@root/config')
 const { CustomError, HttpError } = require('@/utils/error')
@@ -49,7 +49,7 @@ router.post('/register', async ctx => {
     return
   }
   let { name, email, password, avatar, code, type, level, phone, salt } = ctx.request.body
-  const findResult = await AuthUser.findAll({ where: { email } })
+  const findResult = await User.findAll({ where: { email } })
   if (findResult.length > 0) {
     ctx.body = { msg: '邮箱已被占用' }
     return
@@ -59,7 +59,7 @@ router.post('/register', async ctx => {
   if (!avatar) {
     avatar = `https://api.multiavatar.com/${name}.svg`
   }
-  const newAuthUser = await AuthUser.build({
+  const uthUser = await User.build({
     name,
     email,
     password,
@@ -73,7 +73,7 @@ router.post('/register', async ctx => {
     updated_at: new Date(),
   })
   // 存入数据库
-  await newAuthUser
+  await uthUser
     .save()
     .then(user => {
       ctx.body = user
@@ -100,7 +100,7 @@ router.post('/login', async ctx => {
   }
   const { phone, email, password } = ctx.request.body
   const loginName = phone ? { phone } : { email }
-  const findResult = await AuthUser.findAll(loginName)
+  const findResult = await User.findAll(loginName)
   if (findResult.length == 0) {
     ctx.status = 404
     ctx.body = { msg: '用户不存在' }

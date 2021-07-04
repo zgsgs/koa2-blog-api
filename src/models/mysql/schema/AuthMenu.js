@@ -1,7 +1,7 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-06-28 00:09:48
- * @LastEditTime : 2021-07-04 13:53:38
+ * @LastEditTime : 2021-07-04 20:48:33
  * @LastEditors  : Jason
  * @Description: 菜单模型
  * @FilePath     : \koa2-blog-api\src\models\mysql\schema\AuthMenu.js
@@ -11,7 +11,6 @@ const sequelize = require('@models/mysql')
 
 const AuthMenu = sequelize.define('AuthMenu', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
-  // menu_id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '菜单ID' },
   status: { type: DataTypes.INTEGER, allowNull: false, comment: '状态 0-未启用', defaultValue: 0 },
   name: { type: DataTypes.STRING, allowNull: false, comment: '菜单名' },
   code: { type: DataTypes.STRING, allowNull: false, comment: '菜单代码' },
@@ -22,7 +21,7 @@ const AuthMenu = sequelize.define('AuthMenu', {
   link: { type: DataTypes.STRING, comment: '页面地址' },
   level: { type: DataTypes.STRING, allowNull: false, comment: '等级' },
   path: { type: DataTypes.STRING, comment: '树ID的路径 从根节点到当前树的父节点的路径 逗号分隔' },
-  is_delete: { type: DataTypes.INTEGER, comment: '软删除 1已删除 0未删除 1已删除 0未删除' },
+  is_delete: { type: DataTypes.INTEGER, comment: '软删除 1-已删除 0-未删除', defaultValue: 0 },
   revision: { type: DataTypes.STRING, comment: '乐观锁' },
   created_by: { type: DataTypes.STRING, comment: '创建人' },
   created_at: { type: DataTypes.DATE, comment: '创建时间', defaultValue: DataTypes.DATE },
