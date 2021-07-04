@@ -1,7 +1,7 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-06-27 16:53:09
- * @LastEditTime : 2021-07-04 22:32:53
+ * @LastEditTime : 2021-07-04 23:40:35
  * @LastEditors  : Jason
  * @Description: 用户模型
  * @FilePath     : \koa2-blog-api\src\models\mysql\schema\User.js
@@ -22,8 +22,8 @@ const sequelize = require('@models/mysql')
 
 const User = sequelize.define('User', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
-  uuid: { type: DataTypes.STRING, allowNull: false, unique: true, comment: 'uuid用户唯一标识', defaultValue: DataTypes.UUIDV4 },
   status: { type: DataTypes.INTEGER, allowNull: false, comment: '状态 0-未启用', defaultValue: 0 },
+  uuid: { type: DataTypes.STRING, allowNull: false, unique: true, comment: 'uuid用户唯一标识', defaultValue: DataTypes.UUIDV4 },
   code: { type: DataTypes.STRING, allowNull: false, comment: '账号代号' },
   type: { type: DataTypes.STRING, allowNull: false, comment: '账号类型 0-管理员 1-一般用户(注册但未认证) 2-会员(认证通过) 3-VIP(付费用户)' },
   level: { type: DataTypes.INTEGER, allowNull: false, comment: '账号等级', defaultValue: 0 },

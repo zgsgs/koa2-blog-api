@@ -1,7 +1,7 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-06-27 01:22:03
- * @LastEditTime : 2021-07-04 23:34:47
+ * @LastEditTime : 2021-07-04 23:39:29
  * @LastEditors  : Jason
  * @Description: 用户账号模型
  * @FilePath     : \koa2-blog-api\src\models\mysql\schema\Auth.js
@@ -11,8 +11,8 @@ const sequelize = require('@models/mysql')
 
 const Auth = sequelize.define('Auth', {
   id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false, unique: true, autoIncrement: true, comment: '流水号' },
-  uid: { type: DataTypes.INTEGER, allowNull: false, comment: '用户ID' },
   status: { type: DataTypes.INTEGER, allowNull: false, comment: '状态 0-未启用', defaultValue: 0 },
+  uid: { type: DataTypes.INTEGER, allowNull: false, comment: '用户ID' },
   type: { type: DataTypes.STRING, allowNull: false, comment: '第三方登录类型 github gitlab google microsoft qq wechart weibo' },
   openid: { type: DataTypes.STRING, allowNull: false, comment: '第三方 uid openid 等' },
   unionid: { type: DataTypes.STRING, comment: 'QQ/微信同一主体下 Unionid 相同' },
