@@ -1,22 +1,22 @@
 /*
- * @Author: jason <2087108700@qq.com>
- * @Date: 2021-06-26 23:00:16
- * @LastEditTime: 2021-06-27 13:20:56
- * @LastEditors: jason
- * @Description: 主入口文件
- * @FilePath: \koa2-blog-api\src\main.js
+ * @Author       : jason <2087108700@qq.com>
+ * @Date         : 2021-06-26 23:00:16
+ * @LastEditTime : 2021-07-05 13:31:50
+ * @LastEditors  : Jason
+ * @Description  : 主入口文件
+ * @FilePath     : \koa2-blog-api\src\main.js
  */
 require('module-alias/register')
 const koa = require('koa')
-const clear = require('clear')
-// Initialize Models before import passport
-const middlewares = require('@/middlewares')
-// Initialize DataBase
-require('@models/mysql')
-
 // Instantiate koa
 const app = new koa()
+// Initialize Models before import passport
+const middlewares = require('@/middlewares')
 middlewares(app)
+// Initialize DataBase
+require('@models/mysql')
+// Clear
+const clear = require('clear')
 clear()
 
 const port = process.env.PORT || 5000

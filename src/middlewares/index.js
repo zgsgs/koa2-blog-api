@@ -1,7 +1,7 @@
 /*
  * @Author: jason <2087108700@qq.com>
  * @Date: 2021-06-26 23:28:21
- * @LastEditTime : 2021-07-05 02:11:39
+ * @LastEditTime : 2021-07-05 13:21:16
  * @LastEditors  : Jason
  * @Description: 中间件统一入口 导出所有中间件
  * @FilePath     : \koa2-blog-api\src\middlewares\index.js
@@ -13,12 +13,14 @@ const logger = require('./logger/logger')
 const passport = require('./passport')
 const static = require('./static')
 const body = require('./body')
+const cors = require('./cors')
 
 module.exports = async app => {
   app.use(logger())
   app.use(error())
   app.use(static())
   app.use(body())
+  app.use(cors())
   app.use(koaPassport.initialize())
   app.use(koaPassport.session())
   app.use(router.routes()).use(router.allowedMethods())
